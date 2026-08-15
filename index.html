@@ -9,13 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* NUEVOS COLORES: Azul Cielo y Verde Esmeralda */
             --primary: #2196F3;       /* Azul cielo */
-            --primary-soft: #64B5F6;  /* Azul cielo suave */
-            --primary-deep: #1565C0;  /* Azul más profundo */
+            --primary-soft: #64B5F6;
+            --primary-deep: #1565C0;
             --secondary: #4CAF50;     /* Verde esmeralda */
             --secondary-light: #A5D6A7;
-            --secondary-deep: #388E3C; /* Verde oscuro para contrastes */
+            --secondary-deep: #388E3C;
             --paper: #ffffff;
             --light-bg: #f4f9fc;
             --line: #e3e7ec;
@@ -25,17 +24,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background:
-                radial-gradient(circle at 20% -10%, var(--primary) 0%, transparent 45%),
-                radial-gradient(circle at 90% 0%, var(--primary-deep) 0%, transparent 40%),
-                #0b1526;
+            background: radial-gradient(circle at 20% -10%, var(--primary) 0%, transparent 45%),
+                        radial-gradient(circle at 90% 0%, var(--primary-deep) 0%, transparent 40%),
+                        #0b1526;
             font-family: 'Inter', sans-serif;
             color: var(--text);
             display: flex;
             justify-content: center;
             padding: 48px 20px;
             line-height: 1.6;
-            font-variant-numeric: tabular-nums;
         }
 
         .convocatoria-container {
@@ -44,14 +41,10 @@
             width: 100%;
             background-color: var(--paper);
             border-radius: 14px;
-            box-shadow:
-                0 2px 4px rgba(0,0,0,0.10),
-                0 12px 24px rgba(0,0,0,0.16),
-                0 32px 70px rgba(0,0,0,0.32);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 12px 24px rgba(0,0,0,0.16), 0 32px 70px rgba(0,0,0,0.32);
             overflow: hidden;
         }
 
-        /* Filete doble tipo diploma (Ahora en Verde) */
         .convocatoria-container::before {
             content: "";
             position: absolute;
@@ -65,40 +58,13 @@
             z-index: 5;
         }
 
-        /* ---------- HEADER ---------- */
+        /* HEADER AHORA CON EL BANNER */
         header {
             position: relative;
-            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-deep) 100%);
-            color: #fff;
+            background: #ffffff;
             text-align: center;
-            padding: 52px 40px 44px;
+            padding: 30px 40px 20px;
             overflow: hidden;
-        }
-        /* Damero tenue de fondo */
-        header::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%),
-                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%);
-            background-size: 44px 44px;
-            background-position: 0 0, 22px 22px;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-        /* Franja de cuadros de ajedrez inferior (Verde) */
-        header::after {
-            content: "";
-            position: absolute;
-            left: 0; right: 0; bottom: 0;
-            height: 10px;
-            background-image:
-                linear-gradient(90deg, var(--secondary) 25%, transparent 25%),
-                linear-gradient(90deg, transparent 75%, var(--secondary) 75%);
-            background-size: 20px 20px, 20px 20px;
-            background-color: var(--primary);
-            opacity: 0.95;
         }
         header > * { position: relative; z-index: 2; }
 
@@ -107,56 +73,26 @@
             font-size: 0.72rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--secondary-light);
-            border: 1px solid rgba(76, 175, 80, 0.5);
+            color: var(--primary);
+            border: 1px solid rgba(33, 150, 243, 0.5);
             border-radius: 40px;
             padding: 6px 16px;
-            margin-bottom: 22px;
+            margin-bottom: 15px;
         }
         
-        /* TU IMAGEN DE LA FERIA VA AQUÍ */
-        .header-img {
-            margin-bottom: 15px;
+        .header-banner {
+            margin: 0 auto 20px;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
-        .header-img img {
-            max-width: 110px; 
+        .header-banner img {
+            max-width: 100%; 
             height: auto; 
-            border-radius: 8px; 
             display: block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-radius: 6px;
         }
 
-        header .crest {
-            font-size: 2.6rem;
-            line-height: 1;
-            margin-bottom: 14px;
-            background: linear-gradient(160deg, var(--secondary-light) 0%, var(--secondary) 45%, var(--secondary-deep) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: var(--secondary);
-        }
-        header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.7rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-            text-wrap: balance;
-        }
-        header h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            color: var(--secondary-light);
-            margin-top: 12px;
-            text-transform: uppercase;
-        }
-
-        /* ---------- INFO BAR ---------- */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -182,12 +118,10 @@
             font-size: 0.95rem;
         }
 
-        /* ---------- BODY ---------- */
         .content {
             position: relative;
             padding: 44px 50px 20px;
         }
-        /* Marca de agua de pieza (rey) */
         .content::before {
             content: "\265A";
             position: absolute;
@@ -228,7 +162,6 @@
             flex-shrink: 0;
         }
 
-        /* Separador con rombo */
         .divider {
             display: flex;
             align-items: center;
@@ -244,7 +177,6 @@
         }
         .divider span { font-size: 0.7rem; transform: rotate(45deg); }
 
-        /* Lista de sistema de competencia */
         .spec-list {
             list-style: none;
             display: grid;
@@ -268,7 +200,6 @@
             margin-bottom: 4px;
         }
 
-        /* ---------- TABLAS ---------- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -276,7 +207,6 @@
             border: 1px solid var(--line);
             border-radius: 10px;
             overflow: hidden;
-            font-variant-numeric: tabular-nums;
         }
         thead th {
             background-color: var(--primary);
@@ -312,14 +242,8 @@
         }
         .note::before { content: "\2605"; color: var(--secondary); }
 
-        /* Grid de dos tablas (inscripción + programa) */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-        }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
-        /* ---------- DISPOSICIONES ---------- */
         .rules { list-style: none; counter-reset: rule; }
         .rules > li {
             counter-increment: rule;
@@ -361,7 +285,6 @@
             font-size: 1.1rem;
             color: var(--primary-deep);
             letter-spacing: 1px;
-            font-variant-numeric: tabular-nums;
         }
         .warn {
             background: #fef4f2;
@@ -373,13 +296,12 @@
             color: #7a2a20;
         }
 
-        /* ---------- FOOTER ---------- */
         footer {
             position: relative;
             background: linear-gradient(160deg, var(--primary) 0%, var(--primary-deep) 100%);
             color: #fff;
             text-align: center;
-            padding: 44px 40px;
+            padding: 40px 40px;
             margin-top: 20px;
             overflow: hidden;
         }
@@ -387,27 +309,13 @@
             content: "";
             position: absolute;
             inset: 0;
-            background-image:
-                linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.04) 75%),
-                linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.04) 75%);
+            background-image: linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.04) 75%),
+                              linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.04) 75%);
             background-size: 44px 44px;
             background-position: 0 0, 22px 22px;
             pointer-events: none;
         }
         footer > * { position: relative; z-index: 2; }
-        
-        /* TU LOGO DEL CLUB VA AQUÍ */
-        .footer-logo {
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: center;
-        }
-        .footer-logo img {
-            max-height: 45px; 
-            width: auto; 
-            display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
 
         footer .crest {
             font-size: 1.9rem;
@@ -435,12 +343,10 @@
             color: var(--secondary-light);
         }
 
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 640px) {
             body { padding: 20px 12px; }
             .content { padding: 32px 24px 10px; }
-            header { padding: 40px 24px 34px; }
-            header h1 { font-size: 2rem; }
+            header { padding: 30px 24px 20px; }
             .two-col { grid-template-columns: 1fr; gap: 32px; }
             table { font-size: 0.85rem; }
             th, td { padding: 10px 10px; }
@@ -448,13 +354,12 @@
             .content::before { font-size: 14rem; }
         }
 
-        /* ---------- IMPRESIÓN PDF (A4) ---------- */
         @media print {
             body { background: #fff; padding: 0; display: block; }
             .convocatoria-container { max-width: 100%; box-shadow: none; border-radius: 0; }
             header, footer, thead th, .info-grid > div, .highlight-box,
             .spec-list li, .rules > li::before, header::before, header::after, footer::before,
-            .header-img img, .footer-logo img {
+            .header-banner img {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -470,33 +375,17 @@
     <header>
         <span class="eyebrow">Convocatoria Oficial</span>
         
-        <!-- 👇 ESPACIO PARA TU IMAGEN DE LA FERIA (Guarda tu imagen como feria_atengo.png) -->
-        <div class="header-img">
-            <img src="feria_atengo.png" alt="Feria Atengo">
+        <!-- 👇 AQUÍ VA TU BANNER (Ya está configurado para buscar banner_atengo.png) -->
+        <div class="header-banner">
+            <img src="banner_atengo.png" alt="Banner oficial Torneo Atengo 2026">
         </div>
-        
-        <div class="crest" aria-hidden="true">&#9822;</div>
-        <h1>Primer Torneo de Ajedrez</h1>
-        <h2>Feria Santa María Nativitas · Atengo 2026</h2>
     </header>
 
     <div class="info-grid">
-        <div>
-            <span class="label">Fecha del torneo</span>
-            <span class="value">Sábado 5 de septiembre, 2026</span>
-        </div>
-        <div>
-            <span class="label">Sede</span>
-            <span class="value">Domo de la comunidad, Atengo, Hgo.</span>
-        </div>
-        <div>
-            <span class="label">Cierre de inscripción</span>
-            <span class="value">Miércoles 2 de septiembre, 2026</span>
-        </div>
-        <div>
-            <span class="label">Informes</span>
-            <span class="value">773 185 6476</span>
-        </div>
+        <div><span class="label">Fecha del torneo</span><span class="value">Sábado 5 de septiembre, 2026</span></div>
+        <div><span class="label">Sede</span><span class="value">Domo de la comunidad, Atengo, Hgo.</span></div>
+        <div><span class="label">Cierre de inscripción</span><span class="value">Miércoles 2 de septiembre, 2026</span></div>
+        <div><span class="label">Informes</span><span class="value">773 185 6476</span></div>
     </div>
 
     <div class="content">
@@ -516,38 +405,13 @@
             <h3><span class="num">II</span> Categorías y Premiación</h3>
             <table>
                 <thead>
-                    <tr>
-                        <th>Categoría</th>
-                        <th>1er Lugar</th>
-                        <th>2do Lugar</th>
-                        <th>3er Lugar</th>
-                    </tr>
+                    <tr><th>Categoría</th><th>1er Lugar</th><th>2do Lugar</th><th>3er Lugar</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><span class="cat-name">Sub 9</span><span class="cat-age">9 años o menos</span></td>
-                        <td class="prize-1">$500.00</td>
-                        <td>$300.00</td>
-                        <td>Juego de Ajedrez</td>
-                    </tr>
-                    <tr>
-                        <td><span class="cat-name">Sub 12</span><span class="cat-age">10 a 12 años</span></td>
-                        <td class="prize-1">$500.00</td>
-                        <td>$300.00</td>
-                        <td>Juego de Ajedrez</td>
-                    </tr>
-                    <tr>
-                        <td><span class="cat-name">Sub 15</span><span class="cat-age">13 a 15 años</span></td>
-                        <td class="prize-1">$600.00</td>
-                        <td>$400.00</td>
-                        <td>$300.00</td>
-                    </tr>
-                    <tr>
-                        <td><span class="cat-name">Libre</span><span class="cat-age">Sin límite de edad</span></td>
-                        <td class="prize-1">$1,200.00</td>
-                        <td>$800.00</td>
-                        <td>$500.00</td>
-                    </tr>
+                    <tr><td><span class="cat-name">Sub 9</span><span class="cat-age">9 años o menos</span></td><td class="prize-1">$500.00</td><td>$300.00</td><td>Juego de Ajedrez</td></tr>
+                    <tr><td><span class="cat-name">Sub 12</span><span class="cat-age">10 a 12 años</span></td><td class="prize-1">$500.00</td><td>$300.00</td><td>Juego de Ajedrez</td></tr>
+                    <tr><td><span class="cat-name">Sub 15</span><span class="cat-age">13 a 15 años</span></td><td class="prize-1">$600.00</td><td>$400.00</td><td>$300.00</td></tr>
+                    <tr><td><span class="cat-name">Libre</span><span class="cat-age">Sin límite de edad</span></td><td class="prize-1">$1,200.00</td><td>$800.00</td><td>$500.00</td></tr>
                 </tbody>
             </table>
             <p class="note">Todos los montos en pesos mexicanos (MXN). Se entregarán medallas a los tres primeros lugares de cada categoría.</p>
@@ -560,9 +424,7 @@
                 <div>
                     <h3><span class="num">III</span> Inscripción</h3>
                     <table>
-                        <thead>
-                            <tr><th>Categoría</th><th>Costo</th></tr>
-                        </thead>
+                        <thead><tr><th>Categoría</th><th>Costo</th></tr></thead>
                         <tbody>
                             <tr><td><span class="cat-name">Sub 9</span></td><td class="price">$50.00</td></tr>
                             <tr><td><span class="cat-name">Sub 12</span></td><td class="price">$50.00</td></tr>
@@ -574,9 +436,7 @@
                 <div>
                     <h3><span class="num">IV</span> Programa</h3>
                     <table>
-                        <thead>
-                            <tr><th>Actividad</th><th>Hora</th></tr>
-                        </thead>
+                        <thead><tr><th>Actividad</th><th>Hora</th></tr></thead>
                         <tbody>
                             <tr><td>Inauguración</td><td>09:00</td></tr>
                             <tr><td>1ª Ronda</td><td>09:30</td></tr>
@@ -623,11 +483,6 @@
     </div>
 
     <footer>
-        <!-- 👇 ESPACIO PARA TU LOGO DEL CLUB (Guarda tu logo como logo_morphy.png) -->
-        <div class="footer-logo">
-            <img src="logo_morphy.png" alt="Logo Club Morphy">
-        </div>
-
         <div class="crest" aria-hidden="true">&#9819;</div>
         <p>El <span class="club">Club Morphy</span> te da la bienvenida. Prepara tus piezas y acompáñanos en este gran evento.</p>
         <span class="cta">¡Te esperamos!</span>
