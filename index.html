@@ -45,7 +45,6 @@
             overflow: hidden;
         }
 
-        /* Filete doble tipo diploma */
         .convocatoria-container::before {
             content: "";
             position: absolute;
@@ -59,7 +58,6 @@
             z-index: 5;
         }
 
-        /* ---------- HEADER ---------- */
         header {
             position: relative;
             background: #ffffff;
@@ -94,7 +92,6 @@
             border-radius: 6px;
         }
 
-        /* ---------- INFO BAR ---------- */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -120,7 +117,6 @@
             font-size: 0.95rem;
         }
 
-        /* ---------- BODY ---------- */
         .content {
             position: relative;
             padding: 44px 50px 20px;
@@ -203,7 +199,6 @@
             margin-bottom: 4px;
         }
 
-        /* ---------- TABLAS ---------- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -248,7 +243,6 @@
 
         .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
-        /* ---------- DISPOSICIONES ---------- */
         .rules { list-style: none; counter-reset: rule; }
         .rules > li {
             counter-increment: rule;
@@ -301,7 +295,6 @@
             color: #7a2a20;
         }
 
-        /* ---------- FOOTER (LOGO DEL CLUB AQUÍ) ---------- */
         footer {
             position: relative;
             background: linear-gradient(160deg, var(--primary) 0%, var(--primary-deep) 100%);
@@ -366,6 +359,7 @@
             .info-grid { grid-template-columns: 1fr 1fr; }
         }
 
+        /* Corrección clave para que las tablas no se corten en móvil */
         @media (max-width: 700px) {
             .two-col { grid-template-columns: 1fr; }
             .header-banner img { border-radius: 4px; }
@@ -373,10 +367,10 @@
             header { padding: 25px 20px 15px; }
             footer { padding: 30px 20px; }
             table { 
-                font-size: 0.82rem; 
+                font-size: 0.8rem; 
                 display: block; 
-                overflow-x: auto;
-                white-space: nowrap;
+                overflow-x: auto; /* Permite deslizar la tabla si aún es muy ancha */
+                white-space: normal; /* Permite que el texto baje a otra línea si no cabe */
             }
             th, td { padding: 8px 8px; }
             .spec-list { grid-template-columns: 1fr; }
@@ -394,21 +388,25 @@
             .content { padding: 20px 15px 10px; }
             .content::before { font-size: 10rem; right: -10px; bottom: -20px; }
             .two-col { gap: 20px; }
-            table { font-size: 0.7rem; }
+            table { font-size: 0.65rem; }
             th, td { padding: 6px 4px; }
             th { font-size: 0.6rem; letter-spacing: 0.5px; }
             .note { font-size: 0.75rem; }
             .footer-logo img { max-height: 40px; }
             footer p { font-size: 1.1rem; }
             footer .cta { font-size: 0.7rem; }
+            
+            /* Corrección para el recuadro de la CLABE en celulares */
+            .highlight-box .row { flex-wrap: wrap; gap: 4px; }
+            .highlight-box .clabe { font-size: 1rem; letter-spacing: 1px; }
         }
 
         /* ======================================================== */
-        /*  DIVISIÓN EN 3 PÁGINAS TAMAÑO CARTA (PARA PDF)            */
+        /*  DIVISIÓN EN 3 PÁGINAS TAMAÑO CARTA (SOLO PARA PDF)      */
         /* ======================================================== */
         @page {
-            size: letter portrait;  /* Tamaño Carta (8.5 x 11 pulgadas) */
-            margin: 0.5in;          /* Márgenes de media pulgada para impresión profesional */
+            size: letter portrait;
+            margin: 0.5in;
         }
 
         @media print {
@@ -424,16 +422,9 @@
             section { page-break-inside: avoid; }
             table { page-break-inside: avoid; }
 
-            /* --- DIVISIÓN ESTRATÉGICA --- */
-            
-            /* Página 1: Termina al final de Sistema de Competencia */
             .section-sistema { page-break-after: always; break-after: page; }
-            
-            /* Página 2: Comienza en Categorías y termina al final de Programa */
             .section-categorias { page-break-before: always; break-before: page; }
             .section-programa { page-break-after: always; break-after: page; }
-            
-            /* Página 3: Comienza en Disposiciones (el footer se quedará al final de la página 3) */
             .section-disposiciones { page-break-before: always; break-before: page; }
         }
     </style>
@@ -443,8 +434,6 @@
 <div class="convocatoria-container">
     <header>
         <span class="eyebrow">Convocatoria Oficial</span>
-        
-        <!-- BANNER DE LA FERIA -->
         <div class="header-banner">
             <img src="banner_atengo.png" alt="Banner oficial Torneo Atengo 2026">
         </div>
@@ -458,8 +447,6 @@
     </div>
 
     <div class="content">
-        
-        <!-- PÁGINA 1 -->
         <section class="section-sistema">
             <h3><span class="num">I</span> Sistema de Competencia</h3>
             <ul class="spec-list">
@@ -472,7 +459,6 @@
 
         <div class="divider"><span aria-hidden="true">&#9670;</span></div>
 
-        <!-- PÁGINA 2 -->
         <section class="section-categorias">
             <h3><span class="num">II</span> Categorías y Premiación</h3>
             <table>
@@ -491,7 +477,6 @@
 
         <div class="divider"><span aria-hidden="true">&#9670;</span></div>
 
-        <!-- (Esta sección contiene Inscripción y Programa, y pertenece a la Página 2) -->
         <section class="section-programa">
             <div class="two-col">
                 <div>
@@ -526,7 +511,6 @@
 
         <div class="divider"><span aria-hidden="true">&#9670;</span></div>
 
-        <!-- PÁGINA 3 -->
         <section class="section-disposiciones">
             <h3><span class="num">V</span> Disposiciones Generales</h3>
             <ol class="rules">
@@ -556,12 +540,10 @@
         </section>
     </div>
 
-    <!-- EL FOOTER QUEDA EN LA PÁGINA 3 -->
     <footer>
         <div class="footer-logo">
             <img src="logo_morphy.png" alt="Logo Club Morphy">
         </div>
-
         <p>El <span class="club">Club Morphy</span> te da la bienvenida. Prepara tus piezas y acompáñanos en este gran evento.</p>
         <span class="cta">¡Te esperamos!</span>
     </footer>
