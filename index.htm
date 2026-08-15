@@ -9,13 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0e1d3c;
-            --navy-soft: #16294f;
-            --gold: #c9a052;
-            --gold-light: #e7d3a3;
-            --gold-deep: #a8823a;
+            /* NUEVOS COLORES: Azul Cielo y Verde Esmeralda */
+            --primary: #2196F3;       /* Azul cielo */
+            --primary-soft: #64B5F6;  /* Azul cielo suave */
+            --primary-deep: #1565C0;  /* Azul más profundo */
+            --secondary: #4CAF50;     /* Verde esmeralda */
+            --secondary-light: #A5D6A7;
+            --secondary-deep: #388E3C; /* Verde oscuro para contrastes */
             --paper: #ffffff;
-            --light-bg: #f6f7f9;
+            --light-bg: #f4f9fc;
             --line: #e3e7ec;
             --text: #1f2733;
             --muted: #5b6472;
@@ -24,8 +26,8 @@
 
         body {
             background:
-                radial-gradient(circle at 20% -10%, #1a2c52 0%, transparent 45%),
-                radial-gradient(circle at 90% 0%, #12233f 0%, transparent 40%),
+                radial-gradient(circle at 20% -10%, var(--primary) 0%, transparent 45%),
+                radial-gradient(circle at 90% 0%, var(--primary-deep) 0%, transparent 40%),
                 #0b1526;
             font-family: 'Inter', sans-serif;
             color: var(--text);
@@ -49,13 +51,13 @@
             overflow: hidden;
         }
 
-        /* Filete dorado doble tipo diploma */
+        /* Filete doble tipo diploma (Ahora en Verde) */
         .convocatoria-container::before {
             content: "";
             position: absolute;
             inset: 14px;
-            border: 1px solid var(--gold);
-            outline: 3px solid var(--gold);
+            border: 1px solid var(--secondary);
+            outline: 3px solid var(--secondary);
             outline-offset: 3px;
             border-radius: 6px;
             pointer-events: none;
@@ -66,7 +68,7 @@
         /* ---------- HEADER ---------- */
         header {
             position: relative;
-            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-deep) 100%);
             color: #fff;
             text-align: center;
             padding: 52px 40px 44px;
@@ -85,17 +87,17 @@
             opacity: 0.6;
             pointer-events: none;
         }
-        /* Franja de cuadros de ajedrez inferior */
+        /* Franja de cuadros de ajedrez inferior (Verde) */
         header::after {
             content: "";
             position: absolute;
             left: 0; right: 0; bottom: 0;
             height: 10px;
             background-image:
-                linear-gradient(90deg, var(--gold) 25%, transparent 25%),
-                linear-gradient(90deg, transparent 75%, var(--gold) 75%);
+                linear-gradient(90deg, var(--secondary) 25%, transparent 25%),
+                linear-gradient(90deg, transparent 75%, var(--secondary) 75%);
             background-size: 20px 20px, 20px 20px;
-            background-color: var(--navy);
+            background-color: var(--primary);
             opacity: 0.95;
         }
         header > * { position: relative; z-index: 2; }
@@ -105,21 +107,36 @@
             font-size: 0.72rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--gold-light);
-            border: 1px solid rgba(201,160,82,0.5);
+            color: var(--secondary-light);
+            border: 1px solid rgba(76, 175, 80, 0.5);
             border-radius: 40px;
             padding: 6px 16px;
             margin-bottom: 22px;
         }
+        
+        /* TU IMAGEN DE LA FERIA VA AQUÍ */
+        .header-img {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .header-img img {
+            max-width: 110px; 
+            height: auto; 
+            border-radius: 8px; 
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
         header .crest {
             font-size: 2.6rem;
             line-height: 1;
             margin-bottom: 14px;
-            background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+            background: linear-gradient(160deg, var(--secondary-light) 0%, var(--secondary) 45%, var(--secondary-deep) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: var(--gold);
+            color: var(--secondary);
         }
         header h1 {
             font-family: 'Cormorant Garamond', serif;
@@ -134,7 +151,7 @@
             font-size: 1rem;
             font-weight: 500;
             letter-spacing: 1px;
-            color: var(--gold-light);
+            color: var(--secondary-light);
             margin-top: 12px;
             text-transform: uppercase;
         }
@@ -161,7 +178,7 @@
         }
         .info-grid .value {
             font-weight: 600;
-            color: var(--navy);
+            color: var(--primary-deep);
             font-size: 0.95rem;
         }
 
@@ -178,7 +195,7 @@
             bottom: -40px;
             font-size: 22rem;
             line-height: 1;
-            color: var(--navy);
+            color: var(--primary);
             opacity: 0.03;
             pointer-events: none;
             z-index: 0;
@@ -189,7 +206,7 @@
 
         h3 {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--navy);
+            color: var(--primary-deep);
             font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 18px;
@@ -202,8 +219,8 @@
             align-items: center;
             justify-content: center;
             width: 34px; height: 34px;
-            background: var(--navy);
-            color: var(--gold);
+            background: var(--primary);
+            color: #fff;
             border-radius: 8px;
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
@@ -217,13 +234,13 @@
             align-items: center;
             gap: 14px;
             margin: 0 0 34px;
-            color: var(--gold);
+            color: var(--secondary);
         }
         .divider::before, .divider::after {
             content: "";
             height: 1px;
             flex: 1;
-            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+            background: linear-gradient(90deg, transparent, var(--secondary-light), transparent);
         }
         .divider span { font-size: 0.7rem; transform: rotate(45deg); }
 
@@ -237,14 +254,14 @@
         .spec-list li {
             background: var(--light-bg);
             border: 1px solid var(--line);
-            border-left: 3px solid var(--gold);
+            border-left: 3px solid var(--secondary);
             border-radius: 8px;
             padding: 14px 16px;
             font-size: 0.92rem;
         }
         .spec-list li strong {
             display: block;
-            color: var(--navy);
+            color: var(--primary-deep);
             font-size: 0.72rem;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -262,7 +279,7 @@
             font-variant-numeric: tabular-nums;
         }
         thead th {
-            background-color: var(--navy);
+            background-color: var(--primary);
             color: #fff;
             padding: 13px 16px;
             text-align: center;
@@ -280,10 +297,10 @@
         }
         td:first-child { text-align: left; }
         tbody tr:nth-child(even) td { background-color: #fafbfc; }
-        .cat-name { font-weight: 600; color: var(--navy); }
+        .cat-name { font-weight: 600; color: var(--primary-deep); }
         .cat-age { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 400; }
-        .prize-1 { color: var(--navy); font-weight: 700; }
-        .price { font-weight: 700; color: var(--navy); }
+        .prize-1 { color: var(--primary-deep); font-weight: 700; }
+        .price { font-weight: 700; color: var(--primary-deep); }
 
         .note {
             font-size: 0.85rem;
@@ -293,7 +310,7 @@
             gap: 8px;
             align-items: flex-start;
         }
-        .note::before { content: "\2605"; color: var(--gold); }
+        .note::before { content: "\2605"; color: var(--secondary); }
 
         /* Grid de dos tablas (inscripción + programa) */
         .two-col {
@@ -317,22 +334,22 @@
             position: absolute;
             left: -17px; top: 0;
             width: 32px; height: 32px;
-            background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
-            color: var(--navy);
+            background: linear-gradient(160deg, var(--secondary-light) 0%, var(--secondary) 55%, var(--secondary-deep) 100%);
+            color: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             font-size: 0.9rem;
-            box-shadow: 0 2px 6px rgba(168,130,58,0.4);
+            box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
         }
-        .rules .rule-title { font-weight: 600; color: var(--navy); }
-        .rules a { color: var(--navy); font-weight: 600; word-break: break-all; }
+        .rules .rule-title { font-weight: 600; color: var(--primary-deep); }
+        .rules a { color: var(--primary-deep); font-weight: 600; word-break: break-all; }
 
         .highlight-box {
-            background: linear-gradient(135deg, #fdf8ee 0%, #f9f0dd 100%);
-            border: 1px solid var(--gold-light);
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 1px solid var(--secondary-light);
             border-radius: 10px;
             padding: 16px 20px;
             margin-top: 12px;
@@ -342,7 +359,7 @@
         .highlight-box .clabe {
             font-weight: 700;
             font-size: 1.1rem;
-            color: var(--navy);
+            color: var(--primary-deep);
             letter-spacing: 1px;
             font-variant-numeric: tabular-nums;
         }
@@ -359,7 +376,7 @@
         /* ---------- FOOTER ---------- */
         footer {
             position: relative;
-            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-deep) 100%);
             color: #fff;
             text-align: center;
             padding: 44px 40px;
@@ -378,14 +395,28 @@
             pointer-events: none;
         }
         footer > * { position: relative; z-index: 2; }
+        
+        /* TU LOGO DEL CLUB VA AQUÍ */
+        .footer-logo {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: center;
+        }
+        .footer-logo img {
+            max-height: 45px; 
+            width: auto; 
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
         footer .crest {
             font-size: 1.9rem;
             margin-bottom: 12px;
-            background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+            background: linear-gradient(160deg, var(--secondary-light) 0%, var(--secondary) 45%, var(--secondary-deep) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: var(--gold);
+            color: var(--secondary);
         }
         footer p {
             font-family: 'Cormorant Garamond', serif;
@@ -394,14 +425,14 @@
             margin: 0 auto 10px;
             text-wrap: balance;
         }
-        footer .club { color: var(--gold); font-weight: 700; }
+        footer .club { color: var(--secondary); font-weight: 700; }
         footer .cta {
             display: inline-block;
             margin-top: 14px;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-size: 0.8rem;
-            color: var(--gold-light);
+            color: var(--secondary-light);
         }
 
         /* ---------- RESPONSIVE ---------- */
@@ -417,12 +448,13 @@
             .content::before { font-size: 14rem; }
         }
 
-        /* ---------- IMPRESIÓN PDF ---------- */
+        /* ---------- IMPRESIÓN PDF (A4) ---------- */
         @media print {
             body { background: #fff; padding: 0; display: block; }
             .convocatoria-container { max-width: 100%; box-shadow: none; border-radius: 0; }
             header, footer, thead th, .info-grid > div, .highlight-box,
-            .spec-list li, .rules > li::before, header::before, header::after, footer::before {
+            .spec-list li, .rules > li::before, header::before, header::after, footer::before,
+            .header-img img, .footer-logo img {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -437,6 +469,12 @@
 <div class="convocatoria-container">
     <header>
         <span class="eyebrow">Convocatoria Oficial</span>
+        
+        <!-- 👇 ESPACIO PARA TU IMAGEN DE LA FERIA (Guarda tu imagen como feria_atengo.png) -->
+        <div class="header-img">
+            <img src="feria_atengo.png" alt="Feria Atengo">
+        </div>
+        
         <div class="crest" aria-hidden="true">&#9822;</div>
         <h1>Primer Torneo de Ajedrez</h1>
         <h2>Feria Santa María Nativitas · Atengo 2026</h2>
@@ -585,6 +623,11 @@
     </div>
 
     <footer>
+        <!-- 👇 ESPACIO PARA TU LOGO DEL CLUB (Guarda tu logo como logo_morphy.png) -->
+        <div class="footer-logo">
+            <img src="logo_morphy.png" alt="Logo Club Morphy">
+        </div>
+
         <div class="crest" aria-hidden="true">&#9819;</div>
         <p>El <span class="club">Club Morphy</span> te da la bienvenida. Prepara tus piezas y acompáñanos en este gran evento.</p>
         <span class="cta">¡Te esperamos!</span>
