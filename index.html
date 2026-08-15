@@ -323,7 +323,6 @@
         }
         footer > * { position: relative; z-index: 2; }
 
-        /* Aquí va tu logo real */
         .footer-logo {
             margin-bottom: 12px;
             display: flex;
@@ -331,11 +330,11 @@
             align-items: center;
         }
         .footer-logo img {
-            max-height: 50px; /* Ajusta este tamaño según lo grande que quieras tu logo */
+            max-height: 50px;
             width: auto;
             display: block;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.1); /* Un pequeño fondo sutil si el logo es transparente */
+            background: rgba(255, 255, 255, 0.1);
             padding: 4px;
         }
 
@@ -399,9 +398,17 @@
             th, td { padding: 6px 4px; }
             th { font-size: 0.6rem; letter-spacing: 0.5px; }
             .note { font-size: 0.75rem; }
-            .footer-logo img { max-height: 40px; } /* Logo más pequeño en celular */
+            .footer-logo img { max-height: 40px; }
             footer p { font-size: 1.1rem; }
             footer .cta { font-size: 0.7rem; }
+        }
+
+        /* ======================================================== */
+        /*  DIVISIÓN EN 3 PÁGINAS TAMAÑO CARTA (PARA PDF)            */
+        /* ======================================================== */
+        @page {
+            size: letter portrait;  /* Tamaño Carta (8.5 x 11 pulgadas) */
+            margin: 0.5in;          /* Márgenes de media pulgada para impresión profesional */
         }
 
         @media print {
@@ -414,8 +421,20 @@
                 print-color-adjust: exact;
             }
             .content::before { opacity: 0.04; }
-            section { break-inside: avoid; }
-            table, .rules > li { break-inside: avoid; }
+            section { page-break-inside: avoid; }
+            table { page-break-inside: avoid; }
+
+            /* --- DIVISIÓN ESTRATÉGICA --- */
+            
+            /* Página 1: Termina al final de Sistema de Competencia */
+            .section-sistema { page-break-after: always; break-after: page; }
+            
+            /* Página 2: Comienza en Categorías y termina al final de Programa */
+            .section-categorias { page-break-before: always; break-before: page; }
+            .section-programa { page-break-after: always; break-after: page; }
+            
+            /* Página 3: Comienza en Disposiciones (el footer se quedará al final de la página 3) */
+            .section-disposiciones { page-break-before: always; break-before: page; }
         }
     </style>
 </head>
@@ -425,7 +444,7 @@
     <header>
         <span class="eyebrow">Convocatoria Oficial</span>
         
-        <!-- 👇 BANNER DE LA FERIA -->
+        <!-- BANNER DE LA FERIA -->
         <div class="header-banner">
             <img src="banner_atengo.png" alt="Banner oficial Torneo Atengo 2026">
         </div>
@@ -439,7 +458,9 @@
     </div>
 
     <div class="content">
-        <section>
+        
+        <!-- PÁGINA 1 -->
+        <section class="section-sistema">
             <h3><span class="num">I</span> Sistema de Competencia</h3>
             <ul class="spec-list">
                 <li><strong>Sistema</strong> Suizo a 5 rondas (ajustable según el número de participantes).</li>
@@ -451,7 +472,8 @@
 
         <div class="divider"><span aria-hidden="true">&#9670;</span></div>
 
-        <section>
+        <!-- PÁGINA 2 -->
+        <section class="section-categorias">
             <h3><span class="num">II</span> Categorías y Premiación</h3>
             <table>
                 <thead>
@@ -469,7 +491,8 @@
 
         <div class="divider"><span aria-hidden="true">&#9670;</span></div>
 
-        <section>
+        <!-- (Esta sección contiene Inscripción y Programa, y pertenece a la Página 2) -->
+        <section class="section-programa">
             <div class="two-col">
                 <div>
                     <h3><span class="num">III</span> Inscripción</h3>
@@ -503,7 +526,8 @@
 
         <div class="divider"><span aria-hidden="true">&#9670;</span></div>
 
-        <section>
+        <!-- PÁGINA 3 -->
+        <section class="section-disposiciones">
             <h3><span class="num">V</span> Disposiciones Generales</h3>
             <ol class="rules">
                 <li>
@@ -532,7 +556,7 @@
         </section>
     </div>
 
-    <!-- 👇 AQUÍ VA EL LOGO DEL CLUB MORPHY -->
+    <!-- EL FOOTER QUEDA EN LA PÁGINA 3 -->
     <footer>
         <div class="footer-logo">
             <img src="logo_morphy.png" alt="Logo Club Morphy">
