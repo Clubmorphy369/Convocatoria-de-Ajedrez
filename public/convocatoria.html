@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocatoria · Primer Torneo de Ajedrez · Atengo 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0e1d3c;
+            --navy-soft: #16294f;
+            --gold: #c9a052;
+            --gold-light: #e7d3a3;
+            --gold-deep: #a8823a;
+            --paper: #ffffff;
+            --light-bg: #f6f7f9;
+            --line: #e3e7ec;
+            --text: #1f2733;
+            --muted: #5b6472;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background:
+                radial-gradient(circle at 20% -10%, #1a2c52 0%, transparent 45%),
+                radial-gradient(circle at 90% 0%, #12233f 0%, transparent 40%),
+                #0b1526;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            padding: 48px 20px;
+            line-height: 1.6;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .convocatoria-container {
+            position: relative;
+            max-width: 860px;
+            width: 100%;
+            background-color: var(--paper);
+            border-radius: 14px;
+            box-shadow:
+                0 2px 4px rgba(0,0,0,0.10),
+                0 12px 24px rgba(0,0,0,0.16),
+                0 32px 70px rgba(0,0,0,0.32);
+            overflow: hidden;
+        }
+
+        /* Filete dorado doble tipo diploma */
+        .convocatoria-container::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1px solid var(--gold);
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 6px;
+            pointer-events: none;
+            opacity: 0.35;
+            z-index: 5;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            position: relative;
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 52px 40px 44px;
+            overflow: hidden;
+        }
+        /* Damero tenue de fondo */
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%),
+                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%);
+            background-size: 44px 44px;
+            background-position: 0 0, 22px 22px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        /* Franja de cuadros de ajedrez inferior */
+        header::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 10px;
+            background-image:
+                linear-gradient(90deg, var(--gold) 25%, transparent 25%),
+                linear-gradient(90deg, transparent 75%, var(--gold) 75%);
+            background-size: 20px 20px, 20px 20px;
+            background-color: var(--navy);
+            opacity: 0.95;
+        }
+        header > * { position: relative; z-index: 2; }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            border: 1px solid rgba(201,160,82,0.5);
+            border-radius: 40px;
+            padding: 6px 16px;
+            margin-bottom: 22px;
+        }
+        header .crest {
+            font-size: 2.6rem;
+            line-height: 1;
+            margin-bottom: 14px;
+            background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--gold);
+        }
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            text-wrap: balance;
+        }
+        header h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+            margin-top: 12px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- INFO BAR ---------- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1px;
+            background: var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .info-grid > div {
+            background: var(--light-bg);
+            padding: 18px 22px;
+        }
+        .info-grid .label {
+            display: block;
+            font-size: 0.68rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+        .info-grid .value {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.95rem;
+        }
+
+        /* ---------- BODY ---------- */
+        .content {
+            position: relative;
+            padding: 44px 50px 20px;
+        }
+        /* Marca de agua de pieza (rey) */
+        .content::before {
+            content: "\265A";
+            position: absolute;
+            right: -30px;
+            bottom: -40px;
+            font-size: 22rem;
+            line-height: 1;
+            color: var(--navy);
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .content > section { position: relative; z-index: 1; }
+
+        section { margin-bottom: 38px; }
+
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--navy);
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        h3 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px; height: 34px;
+            background: var(--navy);
+            color: var(--gold);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Separador con rombo */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 0 0 34px;
+            color: var(--gold);
+        }
+        .divider::before, .divider::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+        .divider span { font-size: 0.7rem; transform: rotate(45deg); }
+
+        /* Lista de sistema de competencia */
+        .spec-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        .spec-list li {
+            background: var(--light-bg);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--gold);
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 0.92rem;
+        }
+        .spec-list li strong {
+            display: block;
+            color: var(--navy);
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* ---------- TABLAS ---------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.93rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            font-variant-numeric: tabular-nums;
+        }
+        thead th {
+            background-color: var(--navy);
+            color: #fff;
+            padding: 13px 16px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        thead th:first-child { text-align: left; }
+        td {
+            border-top: 1px solid var(--line);
+            padding: 12px 16px;
+            text-align: center;
+            color: var(--text);
+        }
+        td:first-child { text-align: left; }
+        tbody tr:nth-child(even) td { background-color: #fafbfc; }
+        .cat-name { font-weight: 600; color: var(--navy); }
+        .cat-age { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 400; }
+        .prize-1 { color: var(--navy); font-weight: 700; }
+        .price { font-weight: 700; color: var(--navy); }
+
+        .note {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+        .note::before { content: "\2605"; color: var(--gold); }
+
+        /* Grid de dos tablas (inscripción + programa) */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        /* ---------- DISPOSICIONES ---------- */
+        .rules { list-style: none; counter-reset: rule; }
+        .rules > li {
+            counter-increment: rule;
+            position: relative;
+            padding: 4px 0 20px 46px;
+            border-left: 2px solid var(--line);
+            margin-left: 16px;
+        }
+        .rules > li:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
+        .rules > li::before {
+            content: counter(rule);
+            position: absolute;
+            left: -17px; top: 0;
+            width: 32px; height: 32px;
+            background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
+            color: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(168,130,58,0.4);
+        }
+        .rules .rule-title { font-weight: 600; color: var(--navy); }
+        .rules a { color: var(--navy); font-weight: 600; word-break: break-all; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fdf8ee 0%, #f9f0dd 100%);
+            border: 1px solid var(--gold-light);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-top: 12px;
+            font-size: 0.92rem;
+        }
+        .highlight-box .row { display: flex; justify-content: space-between; padding: 3px 0; }
+        .highlight-box .clabe {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--navy);
+            letter-spacing: 1px;
+            font-variant-numeric: tabular-nums;
+        }
+        .warn {
+            background: #fef4f2;
+            border-left: 3px solid #c0392b;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #7a2a20;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            position: relative;
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 44px 40px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.04) 75%),
+                linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.04) 75%);
+            background-size: 44px 44px;
+            background-position: 0 0, 22px 22px;
+            pointer-events: none;
+        }
+        footer > * { position: relative; z-index: 2; }
+        footer .crest {
+            font-size: 1.9rem;
+            margin-bottom: 12px;
+            background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--gold);
+        }
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            max-width: 520px;
+            margin: 0 auto 10px;
+            text-wrap: balance;
+        }
+        footer .club { color: var(--gold); font-weight: 700; }
+        footer .cta {
+            display: inline-block;
+            margin-top: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: var(--gold-light);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 640px) {
+            body { padding: 20px 12px; }
+            .content { padding: 32px 24px 10px; }
+            header { padding: 40px 24px 34px; }
+            header h1 { font-size: 2rem; }
+            .two-col { grid-template-columns: 1fr; gap: 32px; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 10px 10px; }
+            .convocatoria-container::before { inset: 8px; }
+            .content::before { font-size: 14rem; }
+        }
+
+        /* ---------- IMPRESIÓN PDF ---------- */
+        @media print {
+            body { background: #fff; padding: 0; display: block; }
+            .convocatoria-container { max-width: 100%; box-shadow: none; border-radius: 0; }
+            header, footer, thead th, .info-grid > div, .highlight-box,
+            .spec-list li, .rules > li::before, header::before, header::after, footer::before {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .content::before { opacity: 0.04; }
+            section { break-inside: avoid; }
+            table, .rules > li { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="convocatoria-container">
+    <header>
+        <span class="eyebrow">Convocatoria Oficial</span>
+        <div class="crest" aria-hidden="true">&#9822;</div>
+        <h1>Primer Torneo de Ajedrez</h1>
+        <h2>Feria Santa María Nativitas · Atengo 2026</h2>
+    </header>
+
+    <div class="info-grid">
+        <div>
+            <span class="label">Fecha del torneo</span>
+            <span class="value">Sábado 5 de septiembre, 2026</span>
+        </div>
+        <div>
+            <span class="label">Sede</span>
+            <span class="value">Domo de la comunidad, Atengo, Hgo.</span>
+        </div>
+        <div>
+            <span class="label">Cierre de inscripción</span>
+            <span class="value">Miércoles 2 de septiembre, 2026</span>
+        </div>
+        <div>
+            <span class="label">Informes</span>
+            <span class="value">773 185 6476</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <section>
+            <h3><span class="num">I</span> Sistema de Competencia</h3>
+            <ul class="spec-list">
+                <li><strong>Sistema</strong> Suizo a 5 rondas (ajustable según el número de participantes).</li>
+                <li><strong>Ritmo de juego</strong> 15 minutos + 3 segundos por jugada.</li>
+                <li><strong>Tolerancia</strong> 5 minutos de retraso máximo.</li>
+                <li><strong>Desempates</strong> Buchholz Mediano · Sonneborn-Berger · Progresivo.</li>
+            </ul>
+        </section>
+
+        <div class="divider"><span aria-hidden="true">&#9670;</span></div>
+
+        <section>
+            <h3><span class="num">II</span> Categorías y Premiación</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>1er Lugar</th>
+                        <th>2do Lugar</th>
+                        <th>3er Lugar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="cat-name">Sub 9</span><span class="cat-age">9 años o menos</span></td>
+                        <td class="prize-1">$500.00</td>
+                        <td>$300.00</td>
+                        <td>Juego de Ajedrez</td>
+                    </tr>
+                    <tr>
+                        <td><span class="cat-name">Sub 12</span><span class="cat-age">10 a 12 años</span></td>
+                        <td class="prize-1">$500.00</td>
+                        <td>$300.00</td>
+                        <td>Juego de Ajedrez</td>
+                    </tr>
+                    <tr>
+                        <td><span class="cat-name">Sub 15</span><span class="cat-age">13 a 15 años</span></td>
+                        <td class="prize-1">$600.00</td>
+                        <td>$400.00</td>
+                        <td>$300.00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="cat-name">Libre</span><span class="cat-age">Sin límite de edad</span></td>
+                        <td class="prize-1">$1,200.00</td>
+                        <td>$800.00</td>
+                        <td>$500.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">Todos los montos en pesos mexicanos (MXN). Se entregarán medallas a los tres primeros lugares de cada categoría.</p>
+        </section>
+
+        <div class="divider"><span aria-hidden="true">&#9670;</span></div>
+
+        <section>
+            <div class="two-col">
+                <div>
+                    <h3><span class="num">III</span> Inscripción</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Categoría</th><th>Costo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="cat-name">Sub 9</span></td><td class="price">$50.00</td></tr>
+                            <tr><td><span class="cat-name">Sub 12</span></td><td class="price">$50.00</td></tr>
+                            <tr><td><span class="cat-name">Sub 15</span></td><td class="price">$70.00</td></tr>
+                            <tr><td><span class="cat-name">Libre</span></td><td class="price">$120.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3><span class="num">IV</span> Programa</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Actividad</th><th>Hora</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Inauguración</td><td>09:00</td></tr>
+                            <tr><td>1ª Ronda</td><td>09:30</td></tr>
+                            <tr><td>2ª Ronda</td><td>10:30</td></tr>
+                            <tr><td>3ª Ronda</td><td>11:30</td></tr>
+                            <tr><td>4ª Ronda</td><td>12:30</td></tr>
+                            <tr><td>5ª Ronda</td><td>13:30</td></tr>
+                            <tr><td>Premiación y Clausura</td><td>15:00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"><span aria-hidden="true">&#9670;</span></div>
+
+        <section>
+            <h3><span class="num">V</span> Disposiciones Generales</h3>
+            <ol class="rules">
+                <li>
+                    <span class="rule-title">Registro obligatorio.</span> Completa tu registro en línea antes del miércoles 2 de septiembre:<br>
+                    <a href="https://forms.gle/cdpZp6gkMg1ckiwD6" target="_blank" rel="noopener">https://forms.gle/cdpZp6gkMg1ckiwD6</a>
+                </li>
+                <li>
+                    <span class="rule-title">Forma de pago.</span> Únicamente por transferencia bancaria anticipada.
+                    <div class="highlight-box">
+                        <div class="row"><span>CLABE</span> <span class="clabe">4152 3137 2222 7431</span></div>
+                        <div class="row"><span>Titular</span> <span>Yolanda Paredes Ruiz</span></div>
+                        <div class="row"><span>Banco</span> <span>BBVA</span></div>
+                    </div>
+                    <div class="warn">No se aceptan pagos en efectivo el día del evento.</div>
+                </li>
+                <li>
+                    <span class="rule-title">Sanciones por falta de pago.</span> Quien no realice el pago antes de la fecha límite participará a partir de la 2ª ronda, iniciando con 0 puntos en la tabla general.
+                </li>
+                <li>
+                    <span class="rule-title">Requisitos para premiación.</span> Es obligatorio presentar copia de la INE (adultos) o CURP (menores de edad).
+                </li>
+                <li>
+                    <span class="rule-title">Casos no previstos.</span> Serán resueltos por el Comité Organizador (Club Morphy).
+                </li>
+            </ol>
+        </section>
+    </div>
+
+    <footer>
+        <div class="crest" aria-hidden="true">&#9819;</div>
+        <p>El <span class="club">Club Morphy</span> te da la bienvenida. Prepara tus piezas y acompáñanos en este gran evento.</p>
+        <span class="cta">¡Te esperamos!</span>
+    </footer>
+</div>
+
+</body>
+</html>
